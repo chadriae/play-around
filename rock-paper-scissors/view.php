@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="border p-6" id="game">
+    <div class="border rounded p-6" id="game">
         <form method="post">
             <ul>
                 <li><input type="checkbox" name="game" value="scissors" id="myCheckbox1" /><label for="myCheckbox1"><img src="images/scissors.png" /></label></li>
@@ -19,22 +19,30 @@
                 <li><input type="checkbox" name="game" value="rock" id="myCheckbox3" /><label for="myCheckbox3"><img src="images/rock.png" /></label></li>
             </ul>
             <br><br>
-            <div class="place-self-center m-4" id="buttons">
+            <div class="place-self-center m-4 gap-2" id="buttons">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="syubmit" name="fight">FIGHT!</button>
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" name="reset">Reset the game</button>
             </div>
         </form>
 
         <p class="result">
-            You just chose: <?php if (isset($_POST["fight"])) {
-                                echo $_POST["game"];
-                            }
-                            ?>
+            You just chose:
+            <p class="font-black">
+                <?php if (isset($_POST["fight"])) {
+                    echo $_POST["game"];
+                }
+                ?>
+            </p>
             <br><br>
-            Your opponent drew: <?php if (isset($_POST["fight"])) {
-                                    echo $game->opponent();
-                                }
-                                ?>
+            <div class="text-right">
+                Your opponent chose:
+                <p class="font-black">
+                    <?php if (isset($_POST["fight"])) {
+                        echo $game->opponent();
+                    }
+                    ?>
+                </p>
+            </div>
             <br><br>
             Result is: <?php if (isset($_POST["fight"])) {
                             echo $game->result;
