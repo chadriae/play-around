@@ -20,7 +20,7 @@
             </ul>
             <br><br>
             <div class="place-self-center m-4 gap-2" id="buttons">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="syubmit" name="fight">FIGHT!</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit" name="fight">FIGHT!</button>
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" name="reset">Reset the game</button>
             </div>
         </form>
@@ -38,7 +38,7 @@
                 Your opponent chose:
                 <p class="font-black">
                     <?php if (isset($_POST["fight"])) {
-                        echo $game->opponent();
+                        echo $_SESSION["computerChoice"];
                     }
                     ?>
                 </p>

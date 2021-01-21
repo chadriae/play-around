@@ -28,7 +28,7 @@ function whatIsHappening()
     var_dump($_SESSION);
     echo "</pre>";
 }
-// whatIsHappening();
+whatIsHappening();
 
 
 // Start the game

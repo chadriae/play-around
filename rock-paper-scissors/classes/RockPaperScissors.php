@@ -3,18 +3,18 @@
 class RockPaperScissors
 {
     public $result;
-    public $playerScore;
-    public $opponentScore;
+    public $playerScore = 0;
+    public $opponentScore = 0;
     public $choices = array("rock", "paper", "scissors");
 
     public function __construct()
     {
-        if (!empty($_SESSION["playerScore"])) {
-            $this->playerScore = $_SESSION["playerScore"];
+        if (empty($_SESSION["playerScore"])) {
+            $_SESSION["playerScore"] = $this->playerScore;
         }
 
-        if (!empty($_SESSION["opponentScore"])) {
-            $this->opponentScore = $_SESSION["opponentScore"];
+        if (empty($_SESSION["opponentScore"])) {
+            $_SESSION["opponentScore"] = $this->opponentScore;
         }
     }
 
@@ -25,7 +25,7 @@ class RockPaperScissors
         // $_SESSION['playerScore'] = $this->playerScore;
         // $_SESSION['opponentScore'] = $this->opponentScore;
 
-        if (isset($_POST["game"])) {
+        if (isset($_POST["fight"])) {
             if ($_POST["game"] == "scissors") {
                 if ($this->opponent() == "scissors") {
                     $this->draw();
@@ -62,7 +62,8 @@ class RockPaperScissors
 
     public function opponent()
     {
-        return $this->choices[array_rand($this->choices)];
+        $_SESSION['computerChoice'] = $this->choices[array_rand($this->choices)];
+        return $_SESSION['computerChoice'];
     }
 
     public function youWin()
@@ -86,5 +87,6 @@ class RockPaperScissors
     {
         $_SESSION["playerScore"] = 0;
         $_SESSION["opponentScore"] = 0;
+        $_SESSION['computerChoice'] = "";
     }
 }
